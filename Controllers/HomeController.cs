@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProjetoSistemaWebAspNetCoreMvcEntityFramework.Models;
+﻿using ControleDeVendas.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ProjetoSistemaWebAspNetCoreMvcEntityFramework.Controllers
+namespace ControleDeVendas.Controllers
 {
     public class HomeController : Controller
     {

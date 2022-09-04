@@ -1,4 +1,4 @@
-namespace ProjetoSistemaWebAspNetCoreMvcEntityFramework.Models
+namespace ControleDeVendas.Models
 {
     public class ErrorViewModel
     {

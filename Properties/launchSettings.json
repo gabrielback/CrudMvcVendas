@@ -3,16 +3,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:29740",
+      "applicationUrl": "http://localhost:30135",
       "sslPort": 44344
     }
   },
   "profiles": {
-    "ProjetoSistemaWebAspNetCoreMvcEntityFramework": {
+    "ControleDeVendas": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7133;http://localhost:5133",
+      "applicationUrl": "https://localhost:7135;http://localhost:5135",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
