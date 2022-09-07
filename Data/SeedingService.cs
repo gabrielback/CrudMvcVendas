@@ -18,7 +18,6 @@ namespace ControleDeVendas.Data
                 _context.Seller.Any() ||
                 _context.SalesRecord.Any())
             {
-                Console.WriteLine("Já está populado");
                 return; // DB has been seeded
             }
 
