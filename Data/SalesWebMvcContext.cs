@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ControleDeVendas.Models;
+using ControleDeVendas.Models.ViewModels;
 
 namespace ControleDeVendas.Data
 {
@@ -14,6 +15,10 @@ namespace ControleDeVendas.Data
         {
         }
 
-        public DbSet<ControleDeVendas.Models.Department> Department { get; set; } = default!;
+        public DbSet<Department> Department { get; set; } = default!;
+
+        public DbSet<Seller> Seller { get; set; }
+
+        public DbSet<SalesRecord> SalesRecord { get; set; }
     }
 }
