@@ -9,9 +9,9 @@ namespace ControleDeVendas.Models.ViewModels
 
         public string Email { get; set; }
 
-        public double BaseSalary { get; set; }
-
         public DateTime BirthDate { get; set; }
+
+        public double BaseSalary { get; set; }
 
         public Department Department { get; set; }
 
@@ -22,13 +22,13 @@ namespace ControleDeVendas.Models.ViewModels
 
         }
 
-        public Seller(int id, string name, string email, double baseSalary, DateTime birthDate, Department department)
+        public Seller(int id, string name, string email, DateTime birthDate, double baseSalary, Department department)
         {
             Id = id;
             Name = name;
             Email = email;
-            BaseSalary = baseSalary;
             BirthDate = birthDate;
+            BaseSalary = baseSalary;
             Department = department;
         }
 

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ControleDeVendas.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMvcContext"), 
     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("SalesWebMvcContext")),
@@ -11,8 +12,9 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
+
+app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
