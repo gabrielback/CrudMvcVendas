@@ -17,5 +17,13 @@ namespace ControleDeVendas.Services
         {
             return _context.Seller.ToList();
         }
+
+        // inserir novo vendedor no banco de dados
+
+        public void Insert(Seller obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }

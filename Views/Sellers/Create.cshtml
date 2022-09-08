@@ -1,0 +1,37 @@
+﻿@model ControleDeVendas.Models.ViewModels.Seller
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <!-- garante que a div vai usar a tela toda -->
+    <div class="col-md-4">
+        <!--Usar 1/3 da tela-->
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="fomr-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="fomr-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="fomr-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseSalary" class="control-label"></label>
+                <input asp-for="BaseSalary" class="fomr-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-danger mt-2"/>
+            </div>
+        </form>
+    </div>
+</div>
