@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ControleDeVendas.Data;
+using ControleDeVendas.Services;
+
+
 
 //Parte do Builder;
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +23,7 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 
 // create a SeedingService Scope
 builder.Services.AddScoped<SeedingService>(); //can be placed among other "AddScoped" - above: var app = builder.Build();   
-
+builder.Services.AddScoped<SellerService>(); // Adicionando injeção de dependência;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
