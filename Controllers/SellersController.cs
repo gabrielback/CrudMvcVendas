@@ -41,6 +41,13 @@ namespace ControleDeVendas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+/*            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+*/
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));// 1:nameof(Index)||2:("Index)... 1-Mais indicado por conta de modificações futuras
         }
@@ -49,14 +56,14 @@ namespace ControleDeVendas.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error), new {message = "Id not provided"});
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             // pegar quem é o obj que sera deletado
 
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
             {
-                return RedirectToAction(nameof(Error), new {message = "Seller not found"});
+                return RedirectToAction(nameof(Error), new { message = "Seller not found" });
             }
 
             return View(obj);
@@ -90,13 +97,15 @@ namespace ControleDeVendas.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null)
+
+
+            if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
 
             }
             var obj = _sellerService.FindById(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
@@ -110,20 +119,27 @@ namespace ControleDeVendas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
-            if(id != seller.Id)
+/*            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+*/
+            if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
             }
             try
             {
-            _sellerService.update(seller);
-            return RedirectToAction(nameof(Index));
+                _sellerService.update(seller);
+                return RedirectToAction(nameof(Index));
             }
-            catch(ApplicationException e) // supertipo 
+            catch (ApplicationException e) // supertipo 
             {
                 return RedirectToAction(nameof(Error), new { message = e.Message });
             }
- 
+
             /*
              * Desnecessário, uma vez que pode ser tratado com o supertipo ApplicationException
             catch (NotFoundException e)
