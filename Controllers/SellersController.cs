@@ -35,8 +35,8 @@ namespace ControleDeVendas.Controllers
 
         // Anotation => Define como post e não de Get
         // ataque crff... Para evitar que alguem aproveita sua autentição para enviar dados maliciosos
-        [HttpPost] 
-        [ValidateAntiForgeryToken] 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
             _sellerService.Insert(seller);
@@ -52,7 +52,7 @@ namespace ControleDeVendas.Controllers
             // pegar quem é o obj que sera deletado
 
             var obj = _sellerService.FindById(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return NotFound();
             }
@@ -68,6 +68,23 @@ namespace ControleDeVendas.Controllers
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
         }
-        
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            // pegar quem é o obj que sera deletado
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
     }
 }
