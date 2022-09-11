@@ -1,7 +1,7 @@
 ﻿@model ControleDeVendas.Models.ViewModels.SellerFormViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -12,7 +12,8 @@
     <!-- garante que a div vai usar a tela toda -->
     <div class="col-md-4">
         <!--Usar 1/3 da tela-->
-        <form asp-action="Create">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Seller.Id" />
             <div class="form-group">
                 <label asp-for="Seller.Name" class="control-label"></label>
                 <input asp-for="Seller.Name" class="fomr-control" />
@@ -34,7 +35,7 @@
                 <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-control"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-danger mt-2" />
+                <input type="submit" value="Save" class="btn btn-danger mt-2" />
             </div>
         </form>
     </div>

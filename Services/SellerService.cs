@@ -1,5 +1,6 @@
 ﻿using ControleDeVendas.Data;
 using ControleDeVendas.Models;
+using ControleDeVendas.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 namespace ControleDeVendas.Services
 {
@@ -29,7 +30,8 @@ namespace ControleDeVendas.Services
 
         public Seller FindById(int id)
         {
-            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id); 
+            // Eager loading => (.Include(obj => obj.Department) => Carrega outros obj associados ao obj principal...
 
         }
         public void Remove(int id)
@@ -37,6 +39,24 @@ namespace ControleDeVendas.Services
             var obj = _context.Seller.Find(id);
             _context.Seller.Remove(obj);
             _context.SaveChanges();
+        }
+        
+        public void update (Seller obj)
+        {
+            if(!_context.Seller.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id not found");
+            }
+            try
+            {
+            _context.Update(obj);
+            _context.SaveChanges();
+
+            }
+            catch(DbCuncurrencyException e)
+            {
+                throw new DbCuncurrencyException(e.Message);
+            }
         }
     }
 }
