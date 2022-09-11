@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using ControleDeVendas.Data;
 using ControleDeVendas.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 
 
@@ -33,6 +35,8 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+
 if (!app.Environment.IsDevelopment())
 {
 
@@ -46,7 +50,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 SeedDatabase();
-
+AppLocation();
 app.UseStaticFiles();
 
 
@@ -70,4 +74,17 @@ void SeedDatabase() //Cria uma função
         var dbInitializer = scope.ServiceProvider.GetRequiredService<SeedingService>(); //Carrega o serviço
         dbInitializer.Seed(); //Roda a funcao do seedingService
     }
+}
+
+void AppLocation() //Cria uma função
+{
+    var enUS = new CultureInfo("en-US");
+    var localizationOptions = new RequestLocalizationOptions
+    {
+        DefaultRequestCulture = new RequestCulture(enUS),
+        SupportedCultures = new List<CultureInfo> { enUS },
+        SupportedUICultures = new List<CultureInfo> { enUS }
+    };
+
+    app.UseRequestLocalization(localizationOptions);
 }
