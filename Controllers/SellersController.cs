@@ -42,6 +42,32 @@ namespace ControleDeVendas.Controllers
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));// 1:nameof(Index)||2:("Index)... 1-Mais indicado por conta de modificações futuras
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            // pegar quem é o obj que sera deletado
+
+            var obj = _sellerService.FindById(id.Value);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _sellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
         
     }
 }
