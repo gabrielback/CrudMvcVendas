@@ -1,5 +1,4 @@
 ﻿using ControleDeVendas.Models;
-using ControleDeVendas.Models.ViewModels;
 using ControleDeVendas.Models.Enums;
 namespace ControleDeVendas.Data
 {

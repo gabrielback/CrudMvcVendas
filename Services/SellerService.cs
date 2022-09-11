@@ -1,5 +1,5 @@
 ﻿using ControleDeVendas.Data;
-using ControleDeVendas.Models.ViewModels;
+using ControleDeVendas.Models;
 
 namespace ControleDeVendas.Services
 {
@@ -22,7 +22,7 @@ namespace ControleDeVendas.Services
 
         public void Insert(Seller obj)
         {
-            obj.Department = _context.Department.First();
+            //obj.Department = _context.Department.First();
             _context.Add(obj);
             _context.SaveChanges();
         }

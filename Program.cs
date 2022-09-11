@@ -24,6 +24,7 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 // create a SeedingService Scope
 builder.Services.AddScoped<SeedingService>(); //can be placed among other "AddScoped" - above: var app = builder.Build();   
 builder.Services.AddScoped<SellerService>(); // Adicionando injeção de dependência;
+builder.Services.AddScoped<DepartmentService>(); // Adicionando injeção de dependência;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

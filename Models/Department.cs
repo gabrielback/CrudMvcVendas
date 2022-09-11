@@ -1,6 +1,4 @@
-﻿using ControleDeVendas.Models.ViewModels;
-
-namespace ControleDeVendas.Models
+﻿namespace ControleDeVendas.Models
 {
     public class Department
     {

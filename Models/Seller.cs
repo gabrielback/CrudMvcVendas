@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-namespace ControleDeVendas.Models.ViewModels
+namespace ControleDeVendas.Models
 {
     public class Seller
     {
