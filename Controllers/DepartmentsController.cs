@@ -141,6 +141,7 @@ namespace ControleDeVendas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
             if (_context.Department == null)
             {
                 return Problem("Entity set 'SalesWebMvcContext.Department'  is null.");
